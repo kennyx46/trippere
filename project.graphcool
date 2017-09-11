@@ -1,0 +1,30 @@
+# project: cj7c6z1d206g90163lyglktyh
+# version: 4
+
+type User implements Node {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  surname: String!
+  gender: Gender!
+  birthdate: DateTime!
+  images: [File!]! @relation(name: "UsersImages")
+}
+
+enum Gender {
+  Male
+  Female
+}
+
+type File implements Node {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String!
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  url: String! @isUnique
+  user: User! @relation(name: "UsersImages")
+}
